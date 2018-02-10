@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>1111</p>
+<p>1111</p>
+<p>1111</p>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+    var data = [
+        { name: '1', age: 11 },
+        { name: '2', age: 12 },
+        { name: '3', age: 13 }
+    ];
+    var p = d3.select("body").selectAll('p');
+    //可以连写的
+    //数据绑定 data是数组 datum是一个数据
+    p.data(data)
+        .text(function (d, index) {
+            return '姓名是' + d.name + "第" + index + "个"
+        })
+        .style("color", function (dom, index) {
+            return index % 2 === 1 ? '#000' : 'red'
+        });
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p>hello world</p>
+<p></p>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+    //避免繁琐的循环 类似jq一样操作dom
+    var p = d3.select("body").selectAll('p');
+    p.text('change');
+    p.style("color", function (dom, index) {
+        return index % 2 === 1 ? '#000' : '#ccc'
+    })
+</script>
+</body>
+</html>
