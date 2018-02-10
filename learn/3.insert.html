@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>1111</p>
+<p id="pid">1111</p>
+<p>1111</p>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+    //某位置之前插入
+    d3.select('body').insert('p','#pid').text("insert p dom");
+    //插入到末尾
+    d3.select('body').append('p').text("append p dom");
+    var p = d3.select("body").selectAll('p');
+    p.style("color", function (dom, index) {
+        return index % 2 === 1 ? '#000' : 'red'
+    });
+    //删除
+    d3.select('body').select('#pid').remove()
+</script>
+</body>
+</html>
