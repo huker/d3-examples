@@ -52,7 +52,9 @@ pNodes.data(data)
   d3.select('body').select('#pid').remove();
   ```
 
-### 开始画图表
+### 开始画个简单的图试试水
+
+![](img/rectchart.png)
 
 ```javascript
 var svg = d3.select('#chart')         //文档中弄个div id是chart
@@ -79,3 +81,26 @@ svg.selectAll("rect")
 ```
 
 实际运用中大部分的图都是这样，没有预先的dom，然后通过数据来对应创建的。
+
+### 比例尺
+
+上面那种矩形的宽度是直接取data的数据，这样如果画布是300px，然后data只有1的话，画出来就很难看，所以我们要用到比例尺，可以让数据和视图更加自由。
+
+- 线性比例尺
+
+  v3 : d3.scale.linear / v4 : d3.scaleLinear
+
+  ```javascript
+  var data = [2.5, 2.1, 1.7, 1.3, 0.9];
+  var linear = d3.scaleLinear()
+  .domain([0, d3.max(data)])   //定义域
+  .range([0, 250]);            //值域
+
+  //.attr("width", function (d) {
+  //            return linear(d);
+  //        })
+  ```
+
+  domian([min,max])是定义域，常用d3.min()和d3.max()这两方法来获取最大最小的数据。
+
+- 序数比例尺 ordinal 用在domian和range不是线性对应关系时
